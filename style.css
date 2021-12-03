@@ -3,7 +3,7 @@
 
 body {
     font-family: Roboto, sans-serif;
-    background-color: #d9d9f3;
+    background-color: #f5f5f5;
 }
 
 header {
@@ -12,20 +12,38 @@ header {
     font-family: Roboto, sans-serif;
     font-weight: bold;
     justify-content: center;
-    width: 30vh;
+    width: 13em;
     margin: auto;
-    border: 5px solid black;
+    border: 0.8em solid black;
 }
 
 #header-container {
     display: flex;
     flex-direction: column;
-}
-
-#big-text {
-    
+    margin-bottom: 1em;
 }
 
 #small-text {
     text-align: right;
+    color: #f5f5f5;
+    background-color: black;
+}
+
+#btnAdd {
+    padding: 1em;
+    border: 0.6em solid black;
+    font-weight: 800    ;
+    color: black;
+    background-color: #c0dbf3;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+#btnAdd:active {
+    padding: 1em;
+    border: 0.6em solid black;
+    font-weight: 800;
+    color: #f5f5f5;
+    background-color: black;
+    text-align: justify;
 }

@@ -29,7 +29,7 @@ header {
     background-color: black;
 }
 
-#btnAdd {
+#button-add {
     padding: 1em;
     border: 0.6em solid black;
     font-weight: 800;
@@ -39,7 +39,7 @@ header {
     font-size: 1.1em;
 }
 
-#btnAdd:active {
+#button-add:active {
     padding: 1em;
     border: 0.6em solid black;
     font-weight: 800;
@@ -71,6 +71,10 @@ header {
     flex: 1 0 22%;
 }
 
+.placeholder:active {
+    background-color: #f5f5f5;
+ }
+ 
 .text-right {
     text-align: right;
     font-weight: 600;

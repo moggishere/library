@@ -6,7 +6,7 @@ function Book(title, author, pages, status) {
     this.author = author; //string
     this.pages = pages; // integer
     this.status = status; // BOOLEAN? actually int -> 0 == NOT READ | 1 == READ | 2 == ERASE
-    
+
 }
 
 function testingOnly() { // FOR TESTING ONLY
@@ -83,6 +83,7 @@ function addEntry(title, author, pages, status) {
 
     newBookDiv.setAttribute('id', `${entryId}`);
     entryId++;
+    newBookDiv.classList.add('added')
 }
 
 function addBookToTheLibrary() {
@@ -98,9 +99,12 @@ function addBookToTheLibrary() {
 }
 
 function clearLibrary() {
-    for (let i = 0; i < entryId; i++) {
-        document.getElementById(`${i}`).remove(); 
-    }
+    const added = document.querySelectorAll('.added');
+    // for (let i = 0; i < added.length; i++) {
+    //     document.getElementById(`${i}`).remove(); 
+
+    // }
+    document.querySelectorAll('.added').forEach(e => e.remove);
 }
 
 function drawLibrary() {
@@ -111,13 +115,22 @@ function drawLibrary() {
 
 const btnAdd = document.getElementById('button-add');
 btnAdd.addEventListener('click', e => {
-
+    clearLibrary();
     addBookToTheLibrary();
 });
 
 function removeBook(array, position) {
+    // const added = document.querySelectorAll('.added'); 
+    // for (let i = 0; i < added.length; i++) {
+    //     document.getElementById(`${i+1}`).remove();
+    // }
     const temp = array[position];
 
 }
 
-window.onload = testingOnly(), drawLibrary();
+window.onload = testingOnly(), drawLibrary(); 
+
+const btnStatus = getElementById('1');
+btnStatus.addEventListener('click', e => {
+    console.log(e);
+})

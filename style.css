@@ -1,20 +1,28 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 @import url(https://fonts.googleapis.com/css?family=Alfa+Slab+One);
 
+:root {
+    --color-main: #c0dbf3;
+    --color-body: #f5f5f5;
+    --color-strong: #1a1a1a;
+
+    --ff-primary: Roboto, sans-serif;
+}
+
 body {
-    font-family: Roboto, sans-serif;
-    background-color: #f5f5f5;
+    font-family: var(--ff-primary);
+    background-color: var(--color-body);
 }
 
 header {
     display: flex;
-    background-color: #c0dbf3;
-    font-family: Roboto, sans-serif;
+    background-color: var(--color-main);
+    font-family: var(--ff-primary);
     font-weight: bold;
     justify-content: center;
     width: 13em;
     margin: auto;
-    border: 0.8em solid black;
+    border: 0.8em solid var(--color-strong);
 }
 
 #header-container {
@@ -25,26 +33,26 @@ header {
 
 #small-text {
     text-align: right;
-    color: #f5f5f5;
-    background-color: black;
+    color: var(--color-body);
+    background-color: var(--color-strong);
 }
 
 #button-add {
     padding: 1em;
-    border: 0.6em solid black;
+    border: 0.6em solid var(--color-strong);
     font-weight: 800;
-    color: black;
-    background-color: #c0dbf3;
+    color: var(--color-strong);
+    background-color: var(--color-main);
     text-align: justify;
     font-size: 1.1em;
 }
 
 #button-add:active {
     padding: 1em;
-    border: 0.6em solid black;
+    border: 0.6em solid var(--color-strong);
     font-weight: 800;
-    color: #f5f5f5;
-    background-color: black;
+    color: var(--color-body);
+    background-color: var(--color-strong);
     text-align: justify;
 }
 
@@ -65,15 +73,15 @@ header {
 }
 
 .placeholder {
-    background-color: #c0dbf3;
-    border: 0.8em solid black;
+    background-color: var(--color-main);
+    border: 0.8em solid var(--color-strong);
     padding: 0.5em;
     flex: 1 0 22%;
 }
 
-.placeholder:active {
-    background-color: #f5f5f5;
- }
+/* .placeholder:active {
+    background-color: var(--color-body);
+ } */
  
 .text-right {
     text-align: right;
@@ -81,6 +89,37 @@ header {
 }
 
 .text-left {
-    color: #f5f5f5;
+    color: var(--color-body);
     background-color: black;
+}
+
+.update-button {
+    padding: 0.5em;
+    border: 0.6em solid var(--color-strong);
+    font-weight: 800;
+    color: var(--color-strong);
+    background-color: var(--color-main);
+    text-align: justify;
+    font-size: 1em;
+}
+
+.update-button:active {
+    background-color: var(--color-strong);
+    color: var(--color-body);
+}
+
+.clear-button {
+    padding: 0.5em;
+    border: 0.6em solid var(--color-strong);
+    font-weight: 800;
+    color: var(--color-strong);
+    background-color: var(--color-main);
+    text-align: right;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+.clear-button:active {
+    background-color: var(--color-strong);
+    color: var(--color-body);
 }

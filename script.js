@@ -1,12 +1,12 @@
 let myLibrary = [];
-let entryId = 0; // adds Id entry to every <a>
+let entryId = -1; // adds Id entry to every <a>
 
 function Book(title, author, pages, status) {
     this.title = title; //string
     this.author = author; //string
     this.pages = pages; // integer
-    this.status = status; // BOOLEAN? actually int -> 0 == NOT READ | 1 == READ | 2 == ERASE
-    
+    this.status = status; // BOOLEAN
+
 }
 
 function testingOnly() { // FOR TESTING ONLY
@@ -20,12 +20,7 @@ function testingOnly() { // FOR TESTING ONLY
 
 function addEntry(title, author, pages, status) {
 
-    let statusStr;
-    if (status == 1) {
-        statusStr = 'READ';
-    } else if (status == 0) {
-        statusStr = 'NOT READ';
-    }
+    let statusStr = 'NOT READ';
 
     const containerCapture = document.getElementById('container');
     const newBookDiv = document.createElement('a');
@@ -81,15 +76,44 @@ function addEntry(title, author, pages, status) {
     newBookDiv.appendChild(bookStatus);
     newBookDiv.appendChild(inputStatus);
 
+    const updateBtn = document.createElement('button');
+    const updateBtnText = document.createTextNode('mark as read');
+    updateBtn.appendChild(updateBtnText);
+    newBookDiv.appendChild(updateBtn);
+    updateBtn.classList.add('update-button');
+
+    const clearBtn = document.createElement('button');
+    const clearBtnText = document.createTextNode('remove me');
+    clearBtn.appendChild(clearBtnText);
+    newBookDiv.appendChild(clearBtn);
+    clearBtn.classList.add('clear-button');
+
+    updateBtn.setAttribute('id', `${entryId}`);
+    updateBtn.addEventListener('click', e => {
+        inputStatusText.nodeValue = 'READ'
+    })
+
+    clearBtn.setAttribute('id', `${entryId}`);
+    clearBtn.addEventListener('click', e => {
+        console.log(e);
+        removeBook(myLibrary, entryId);
+        filterArray(myLibrary);
+        clearLibrary();
+        drawLibrary();
+    })
+
+
+    newBookDiv.classList.add('added');
     newBookDiv.setAttribute('id', `${entryId}`);
     entryId++;
+
 }
 
 function addBookToTheLibrary() {
     let titleInput = prompt('insert book title', 'eg. the hobbit goes to paris'); // placeholder before i figure out how to make a form popup
     let authorInput = prompt('insert author name', 'eg. tolky');
     let pagesInput = prompt('insert total pages', 'eg 420');
-    let statusInput = prompt('insert status', 'read or not'); // find better solution that isn't a string
+    let statusInput = 0; // prompt('insert status', 'read or not'); // find better solution that isn't a string
 
     const newBook = new Book(titleInput, authorInput, pagesInput, statusInput);
     myLibrary.push(newBook);
@@ -98,12 +122,13 @@ function addBookToTheLibrary() {
 }
 
 function clearLibrary() {
-    for (let i = 0; i < entryId; i++) {
-        document.getElementById(`${i}`).remove(); 
-    }
+    entryId = -1;
+    const elements = document.getElementsByClassName("added");
+    while (elements.length > 0) elements[0].remove();
 }
 
 function drawLibrary() {
+
     for (let i = 0; i < myLibrary.length; i++) {
         addEntry(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].status);
     }
@@ -116,8 +141,15 @@ btnAdd.addEventListener('click', e => {
 });
 
 function removeBook(array, position) {
-    const temp = array[position];
-
+    delete array[position];
 }
 
-window.onload = testingOnly(), drawLibrary();
+function filterArray(array) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === undefined) {
+            array.splice(i, 1);
+        }
+    }
+}
+
+const btnClear = document.getElementById

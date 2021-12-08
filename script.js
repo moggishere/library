@@ -134,6 +134,12 @@ function drawLibrary() {
     }
 }
 
+// const btnAdd = document.getElementById('button-add');
+// btnAdd.addEventListener('click', e => {
+
+//     addBookToTheLibrary();
+// });
+
 const btnAdd = document.getElementById('button-add');
 btnAdd.addEventListener('click', e => {
 

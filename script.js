@@ -146,7 +146,6 @@ const modalClose = document.querySelector('.modal-close');
 const form = document.getElementById('user-input');
 form.addEventListener('submit', e => {
     event.preventDefault();
-    // addBookToTheLibrary()
     let titleInput = document.getElementById('title').value;
     let authorInput = document.getElementById('author').value;
     let pagesInput = document.getElementById('pages').value;
@@ -160,7 +159,6 @@ form.addEventListener('submit', e => {
 
 btnAdd.addEventListener('click', e => {
     modalBg.classList.add('bg-active');
-    // addBookToTheLibrary();
 });
 
 function removeBook(array, position) {
@@ -179,3 +177,5 @@ const btnClear = document.querySelector('.modal-close')
 btnClear.addEventListener('click', e => {
     modalBg.classList.remove('bg-active');
 })
+
+window.onload = testingOnly(), drawLibrary();

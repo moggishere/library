@@ -110,10 +110,14 @@ function addEntry(title, author, pages, status) {
 }
 
 function addBookToTheLibrary() {
-    let titleInput = prompt('insert book title', 'eg. the hobbit goes to paris'); // placeholder before i figure out how to make a form popup
-    let authorInput = prompt('insert author name', 'eg. tolky');
-    let pagesInput = prompt('insert total pages', 'eg 420');
-    let statusInput = 0; // prompt('insert status', 'read or not'); // find better solution that isn't a string
+    // let titleInput = prompt('insert book title', 'eg. the hobbit goes to paris'); // placeholder before i figure out how to make a form popup
+    // let authorInput = prompt('insert author name', 'eg. tolky');
+    // let pagesInput = prompt('insert total pages', 'eg 420');
+    // let statusInput = 0; // prompt('insert status', 'read or not'); // find better solution that isn't a string
+
+    let titleInput = document.getElementById('title').value;
+    let authorInput = document.getElementById('author').value;
+    let pagesInput = document.getElementById('pages').value;
 
     const newBook = new Book(titleInput, authorInput, pagesInput, statusInput);
     myLibrary.push(newBook);
@@ -134,16 +138,29 @@ function drawLibrary() {
     }
 }
 
-// const btnAdd = document.getElementById('button-add');
-// btnAdd.addEventListener('click', e => {
-
-//     addBookToTheLibrary();
-// });
-
 const btnAdd = document.getElementById('button-add');
-btnAdd.addEventListener('click', e => {
+const modalBg = document.querySelector('.modal-bg');
+const modalClose = document.querySelector('.modal-close');
 
-    addBookToTheLibrary();
+
+const form = document.getElementById('user-input');
+form.addEventListener('submit', e => {
+    event.preventDefault();
+    // addBookToTheLibrary()
+    let titleInput = document.getElementById('title').value;
+    let authorInput = document.getElementById('author').value;
+    let pagesInput = document.getElementById('pages').value;
+
+    const newBook = new Book(titleInput, authorInput, pagesInput);
+    myLibrary.push(newBook);
+
+    addEntry(titleInput, authorInput, pagesInput);
+    modalBg.classList.remove('bg-active');
+})
+
+btnAdd.addEventListener('click', e => {
+    modalBg.classList.add('bg-active');
+    // addBookToTheLibrary();
 });
 
 function removeBook(array, position) {
@@ -158,4 +175,7 @@ function filterArray(array) {
     }
 }
 
-const btnClear = document.getElementById
+const btnClear = document.querySelector('.modal-close')
+btnClear.addEventListener('click', e => {
+    modalBg.classList.remove('bg-active');
+})
